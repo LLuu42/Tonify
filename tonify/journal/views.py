@@ -71,8 +71,8 @@ def song_seed(emotion):
 def generatePlaylist(sentiment_values, auth_token):
    valence = sentiment_values["joy"]
    top = top_emotion(sentiment_values)
-   seed_artist = artist_seed(top_emotion)
-   seed_song = song_seed(top_emotion)
+   seed_artist = artist_seed(top)
+   seed_song = song_seed(top)
 
    url = "https://api.spotify.com/v1/recommendations"
    params = {"min_energy" : valence,"max_mode" : "5", "market" : "US", "min_danceability" : valence, "seed_tracks" : seed_song , "seed_artists" : seed_artist , "target_popularity" : "30", "min_valence" : valence, }
