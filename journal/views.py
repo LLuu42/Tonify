@@ -5,8 +5,6 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, JsonResponse
 import json
-import commands
-import unirest
 import requests
 import operator
 # Create your views here.
@@ -17,10 +15,12 @@ def index(request):
 def getAuthToken():
    params = {"grant_type" : "client_credentials"}
    headers = {"Authorization": "Basic OGVjNWE2N2RhNGExNDg4NWIwZWY4YWJkZDAyMDhlNDk6NTgwZGY0MzI4NmE3NGJjYjk1MDExNjVkYjQzN2IzZTc="}
-   res = unirest.post("https://accounts.spotify.com/api/token", params=params, headers=headers)
-   return res.body['access_token']
+   res = requests.post("https://accounts.spotify.com/api/token", data=params, headers=headers)
+   return json.loads(res.text)['access_token']
 
 def returnPlaylist(request):
+   print(request.method)
+   print(request.POST)
    if (request.method == 'POST'):
       text = request.POST['input']
       auth_token = getAuthToken()
@@ -32,15 +32,16 @@ def returnPlaylist(request):
 
 def analyzeTone(text):
    url = "https://gateway.watsonplatform.net/natural-language-understanding/api/v1/analyze"
-   params = {"version": "2017-02-27", "text" : text, "features" : "emotion"}
+   params = {"version": "2018-11-16", "text" : text, "features" : "emotion"}
+   print(params)
    auth = ("96218d67-7e51-44e3-911f-f96e0c14570b", "rj86GIfAotc0")
-   res = unirest.get(url, params=params, auth=auth)
-   print res.body # <-------------
+   res = requests.get(url, params=params, auth=auth)
+   print(json.loads(res.text))
 
-   return res.body["emotion"]["document"]["emotion"]
+   return json.loads(res.text)["emotion"]["document"]["emotion"]
 
 def top_emotion(sentiment_values):
-   emotion = max(sentiment_values.iteritems(), key=operator.itemgetter(1))[0]
+   emotion = max(sentiment_values, key=sentiment_values.get)
    return emotion
 
 def artist_seed(emotion):
@@ -78,6 +79,10 @@ def generatePlaylist(sentiment_values, auth_token):
    params = {"min_energy" : valence,"max_mode" : "5", "market" : "US", "min_danceability" : valence, "seed_tracks" : seed_song , "seed_artists" : seed_artist , "target_popularity" : "30", "min_valence" : valence, }
    headers = {"Authorization": "Bearer " + auth_token}
 
-   res = unirest.get(url, headers=headers, params=params)
-   print res.body
-   return res.body
+   print(headers)
+   print(params)
+   res = requests.get(url, headers=headers, params=params)
+   print(res)
+   print(res.text)
+   print(json.loads(res.text))
+   return json.loads(res.text)
