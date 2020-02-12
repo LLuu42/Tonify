@@ -16,7 +16,7 @@ defer==1.0.6
 dialogflow==0.1.0
 dirspec==13.10
 dj-database-url==0.4.2
-Django==1.11.7
+Django==1.11.28
 django-admin==1.1.1
 django-excel-response2==2.0.8
 django-heroku==0.2.0
