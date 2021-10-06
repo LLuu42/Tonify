@@ -81,7 +81,7 @@ reportlab==3.0
 requests==2.18.4
 requests-oauthlib==0.8.0
 rsa==3.4.2
-Scrapy==1.4.0
+Scrapy==1.8.1
 screen==1.0.1
 service-identity==17.0.0
 sessioninstaller==0.0.0
