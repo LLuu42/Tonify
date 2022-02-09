@@ -92,7 +92,7 @@ social-auth-app-django==2.1.0
 social-auth-core==1.6.0
 software-center-aptd-plugins==0.0.0
 system-service==0.1.6
-tensorflow==1.1.0
+tensorflow==2.5.3
 tensorflow-gpu==1.1.0
 Twisted-Core==13.2.0
 Twisted-Web==13.2.0
