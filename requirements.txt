@@ -33,7 +33,7 @@ googleapis-common-protos==1.5.3
 grpcio==1.7.0
 gunicorn==19.7.1
 gyp==0.1
-html5lib==0.999
+html5lib==0.99999999
 httplib2==0.10.3
 idna==2.6
 ipaddress==1.0.19
