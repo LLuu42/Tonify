@@ -42,7 +42,7 @@ lockfile==0.8
 lxml==3.3.3
 mercurial==2.8.2
 mock==2.0.0
-numpy==1.14.0
+numpy==1.22.0
 oauth2client==4.1.2
 oauthlib==2.0.6
 oneconf==0.3.7.14.4.1
