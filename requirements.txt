@@ -39,7 +39,7 @@ idna==2.6
 ipaddress==1.0.19
 json-encoder==0.4.4
 lockfile==0.8
-lxml==3.3.3
+lxml==4.9.1
 mercurial==2.8.2
 mock==2.0.0
 numpy==1.14.0
