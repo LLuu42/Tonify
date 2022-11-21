@@ -93,7 +93,7 @@ social-auth-core==1.6.0
 software-center-aptd-plugins==0.0.0
 system-service==0.1.6
 tensorflow==1.1.0
-tensorflow-gpu==1.1.0
+tensorflow-gpu==2.9.3
 Twisted-Core==13.2.0
 Twisted-Web==13.2.0
 Unirest==1.1.7
